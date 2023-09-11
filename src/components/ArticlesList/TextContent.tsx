@@ -1,4 +1,3 @@
-import {View} from 'react-native';
 import React, {FC} from 'react';
 import {StyledViewComp} from '../SimpleComponents/StyledViewComp';
 import {StyledTextComp} from '../SimpleComponents/StyledTextComp';
