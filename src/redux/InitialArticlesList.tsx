@@ -1,15 +1,7 @@
-import { Images } from "../../images/images";
-import { ImageSourcePropType } from "react-native";
+import {Images} from '../images/images';
+import {ArticleData} from '../types/ArticlesData';
 
-export interface ArticleData {
-  image: ImageSourcePropType;
-  code: string;
-  color: string;
-  size: string;
-  title: string;
-}
-
-export const data: ArticleData[] = [
+export const InitialArticlesList: ArticleData[] = [
   {
     image: Images.longsleeve,
     code: 'CG0934',
