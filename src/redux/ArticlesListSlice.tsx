@@ -7,8 +7,12 @@ const articlesListSlice = createSlice({
   reducers: {
     removeArticle: (articlesState, action: PayloadAction<string>) =>
       articlesState.filter(article => article.code !== action.payload),
+    setArticlesListOrder: (articlesState, action) => {
+      articlesState = action.payload;
+      return action.payload;
+    },
   },
 });
 
 export const ArticlesListReducer = articlesListSlice.reducer;
-export const {removeArticle} = articlesListSlice.actions;
+export const {removeArticle, setArticlesListOrder} = articlesListSlice.actions;

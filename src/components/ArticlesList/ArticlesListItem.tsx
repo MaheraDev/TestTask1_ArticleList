@@ -1,5 +1,5 @@
 import {Image} from 'react-native';
-import React, {FC} from 'react';
+import React, {FC, useCallback} from 'react';
 import {ArticleData} from '../../types/ArticlesData';
 import {TextContent} from './TextContent';
 import {StyledButtonComp} from '../SimpleComponents/StyledButtonComp';
@@ -7,7 +7,10 @@ import {StyledTextComp} from '../SimpleComponents/StyledTextComp';
 import {StyledViewComp} from '../SimpleComponents/StyledViewComp';
 import {StyledSwipeableComp} from '../SimpleComponents/StyledSwipeableComp';
 import {useAppDispatch} from '../../redux/hooks';
-import {removeArticle} from '../../redux/ArticlesListSlice';
+import {
+  removeArticle,
+  setArticlesListOrder,
+} from '../../redux/ArticlesListSlice';
 
 type Props = {
   data: ArticleData;
@@ -20,7 +23,12 @@ export const ArticlesListItem: FC<Props> = ({data}) => {
   const handleDeleteArticle = (c: string) => {
     dispatch(removeArticle(c));
   };
-  console.log(code);
+  const onDragEnd = useCallback(
+    (newOrder: ArticleData[]) => {
+      dispatch(setArticlesListOrder(newOrder));
+    },
+    [dispatch],
+  );
   return (
     <StyledSwipeableComp
       articleCode={code}
