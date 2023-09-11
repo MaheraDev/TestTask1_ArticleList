@@ -1,20 +1,37 @@
-import {FlatList} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import React from 'react';
 
 import {ArticlesListItem} from './ArticlesListItem';
 import {StyledViewComp} from '../SimpleComponents/StyledViewComp';
-import {useAppSelector} from '../../redux/hooks';
+import {useAppDispatch, useAppSelector} from '../../redux/hooks';
+import DraggableFlatList, {
+  RenderItemParams,
+} from 'react-native-draggable-flatlist';
+import {ArticleData} from '../../types/ArticlesData';
+import {setArticlesListOrder} from '../../redux/ArticlesListSlice';
 
 const separator = () => <StyledViewComp height="1px" backgroundColor="grey" />;
 export const ArticlesList = () => {
+  const dispatch = useAppDispatch();
   const articlesList = useAppSelector(state => state.articlesList);
-  console.log(articlesList);
+
+  const handleDragEnd = (data: ArticleData[]) => {
+    dispatch(setArticlesListOrder(data));
+  };
+  const renderTouchableItem = ({item, drag}: RenderItemParams<ArticleData>) => {
+    return (
+      <TouchableOpacity onLongPress={drag}>
+        <ArticlesListItem data={item} />
+      </TouchableOpacity>
+    );
+  };
   return (
     <StyledViewComp width="100%">
-      <FlatList
+      <DraggableFlatList
         data={articlesList}
-        renderItem={({item}) => <ArticlesListItem data={item} />}
-        keyExtractor={item => item.code}
+        renderItem={renderTouchableItem}
+        keyExtractor={item => item.code.toString()}
+        onDragEnd={({data}) => handleDragEnd(data)}
         ItemSeparatorComponent={separator}
       />
     </StyledViewComp>
