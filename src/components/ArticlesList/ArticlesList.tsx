@@ -1,5 +1,5 @@
 import {TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {useCallback} from 'react';
 
 import {ArticlesListItem} from './ArticlesListItem';
 import {StyledViewComp} from '../SimpleComponents/StyledViewComp';
@@ -15,9 +15,12 @@ export const ArticlesList = () => {
   const dispatch = useAppDispatch();
   const articlesList = useAppSelector(state => state.articlesList);
 
-  const handleDragEnd = (data: ArticleData[]) => {
-    dispatch(setArticlesListOrder(data));
-  };
+  const handleDragEnd = useCallback(
+    (data: ArticleData[]) => {
+      dispatch(setArticlesListOrder(data));
+    },
+    [dispatch],
+  );
   const renderTouchableItem = ({item, drag}: RenderItemParams<ArticleData>) => {
     return (
       <TouchableOpacity onLongPress={drag}>
