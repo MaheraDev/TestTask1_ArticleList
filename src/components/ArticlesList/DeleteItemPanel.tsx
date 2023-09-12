@@ -8,16 +8,15 @@ type Props = {
 };
 export const DeleteItemPanel: FC<Props> = props => {
   const {handleDeleteArticle} = props;
-  console.log(handleDeleteArticle);
   return (
     <StyledViewComp
-      flexDirection="row"
-      flex="1"
-      alignItems="center"
-      padding="10px"
-      backgroundColor="#818181">
-      <StyledViewComp flex="1">
-        <StyledTextComp color="#fcfcfc" fontWeight="bold">
+      flexDirection={'row'}
+      flex={'1'}
+      alignItems={'center'}
+      padding={'10px'}
+      backgroundColor={'#818181'}>
+      <StyledViewComp flex={'1'}>
+        <StyledTextComp color={'#fcfcfc'} fontWeight={'bold'}>
           Are you sure?
         </StyledTextComp>
       </StyledViewComp>
@@ -26,7 +25,7 @@ export const DeleteItemPanel: FC<Props> = props => {
           onPress={() => {
             handleDeleteArticle();
           }}>
-          <StyledTextComp color="#fcfcfc" fontWeight="bold">
+          <StyledTextComp color={'#fcfcfc'} fontWeight={'bold'}>
             Delete
           </StyledTextComp>
         </Pressable>

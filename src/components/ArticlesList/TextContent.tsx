@@ -15,15 +15,15 @@ type Props = {
 export const TextContent: FC<Props> = ({content}) => {
   const {code, size, title, color} = content;
   return (
-    <StyledViewComp gap="5px">
+    <StyledViewComp gap={'5px'}>
       <StyledTextComp>{code}</StyledTextComp>
 
-      <StyledViewComp flexDirection="row">
+      <StyledViewComp flexDirection={'row'}>
         <StyledTextComp>{color}</StyledTextComp>
-        <StyledTextComp margin="0 0 0 20px">{size}</StyledTextComp>
+        <StyledTextComp margin={'0 0 0 20px'}>{size}</StyledTextComp>
       </StyledViewComp>
 
-      <StyledTextComp color="lightgray">{title}</StyledTextComp>
+      <StyledTextComp color={'lightgray'}>{title}</StyledTextComp>
     </StyledViewComp>
   );
 };

@@ -9,8 +9,8 @@ import DraggableFlatList, {
 } from 'react-native-draggable-flatlist';
 import {ArticleData} from '../../types/ArticlesData';
 import {setArticlesListOrder} from '../../redux/ArticlesListSlice';
+import {ListSeparator} from '../SimpleComponents/ListSeparator';
 
-const separator = () => <StyledViewComp height="1px" backgroundColor="grey" />;
 export const ArticlesList = () => {
   const dispatch = useAppDispatch();
   const articlesList = useAppSelector(state => state.articlesList);
@@ -21,21 +21,24 @@ export const ArticlesList = () => {
     },
     [dispatch],
   );
-  const renderTouchableItem = ({item, drag}: RenderItemParams<ArticleData>) => {
-    return (
-      <TouchableOpacity onLongPress={drag}>
-        <ArticlesListItem data={item} />
-      </TouchableOpacity>
-    );
-  };
+  const renderTouchableItem = useCallback(
+    ({item, drag}: RenderItemParams<ArticleData>) => {
+      return (
+        <TouchableOpacity onLongPress={drag}>
+          <ArticlesListItem data={item} />
+        </TouchableOpacity>
+      );
+    },
+    [],
+  );
   return (
-    <StyledViewComp width="100%">
+    <StyledViewComp width={'100%'}>
       <DraggableFlatList
         data={articlesList}
         renderItem={renderTouchableItem}
         keyExtractor={item => item.code.toString()}
         onDragEnd={({data}) => handleDragEnd(data)}
-        ItemSeparatorComponent={separator}
+        ItemSeparatorComponent={ListSeparator}
       />
     </StyledViewComp>
   );
