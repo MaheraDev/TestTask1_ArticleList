@@ -3,14 +3,13 @@ import Swipeable from 'react-native-gesture-handler/Swipeable';
 import {DeleteItemPanel} from '../ArticlesList/DeleteItemPanel';
 
 type Props = {
-  articleCode: string;
-  handleDeleteArticle: () => void;
+  handleDeleteItem: () => void;
   children?: ReactNode;
 };
 export const StyledSwipeableComp: FC<Props> = props => {
-  const {handleDeleteArticle} = props;
+  const {handleDeleteItem} = props;
   const rightSwipe = () => {
-    return <DeleteItemPanel handleDeleteArticle={handleDeleteArticle} />;
+    return <DeleteItemPanel handleDeleteItem={handleDeleteItem} />;
   };
   return (
     <Swipeable {...props} renderRightActions={rightSwipe}>
