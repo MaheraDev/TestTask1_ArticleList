@@ -13,15 +13,15 @@ type Props = {
   data: ArticleData;
 };
 export const ArticlesListItem: FC<Props> = ({data}) => {
-  const {image, size, color, title, code} = data;
+  const {image, size, color, title, code, amount} = data;
   const textContent = {code, color, size, title};
 
   const dispatch = useAppDispatch();
-  const handleDeleteArticle = (c: string) => {
-    dispatch(removeArticle(c));
+  const handleDeleteArticle = () => {
+    dispatch(removeArticle(code));
   };
   return (
-    <StyledSwipeableComp handleDeleteItem={() => handleDeleteArticle(code)}>
+    <StyledSwipeableComp handleDeleteItem={handleDeleteArticle}>
       <StyledViewComp
         flexDirection={'row'}
         alignItems={'center'}
@@ -36,7 +36,7 @@ export const ArticlesListItem: FC<Props> = ({data}) => {
           justifyContent={'center'}
           backgroundColor={'green'}>
           <StyledTextComp color="white" fontWeight="700">
-            3
+            {amount}
           </StyledTextComp>
         </StyledButtonComp>
         <StyledTextComp>{'>'}</StyledTextComp>

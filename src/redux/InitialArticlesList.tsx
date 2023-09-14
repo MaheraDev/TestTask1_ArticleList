@@ -8,6 +8,7 @@ export const InitialArticlesList: ArticleData[] = [
     color: 'White',
     size: 'XS',
     title: 'Longsleeve Women X',
+    amount: 3,
     id: 1,
   },
   {
@@ -16,6 +17,7 @@ export const InitialArticlesList: ArticleData[] = [
     color: 'White',
     size: 'S',
     title: 'Longsleeve Women Y',
+    amount: 1,
     id: 2,
   },
   {
@@ -24,6 +26,7 @@ export const InitialArticlesList: ArticleData[] = [
     color: 'White',
     size: 'XL',
     title: 'Longsleeve Women Z',
+    amount: 3,
     id: 3,
   },
   {
@@ -32,6 +35,7 @@ export const InitialArticlesList: ArticleData[] = [
     color: 'White',
     size: 'XL',
     title: 'Longsleeve Women Z',
+    amount: 3,
     id: 4,
   },
   {
@@ -40,6 +44,7 @@ export const InitialArticlesList: ArticleData[] = [
     color: 'White',
     size: 'XL',
     title: 'Longsleeve Women Z',
+    amount: 3,
     id: 5,
   },
   {
@@ -48,6 +53,7 @@ export const InitialArticlesList: ArticleData[] = [
     color: 'White',
     size: 'XL',
     title: 'Longsleeve Women Z',
+    amount: 3,
     id: 6,
   },
   {
@@ -56,6 +62,7 @@ export const InitialArticlesList: ArticleData[] = [
     color: 'White',
     size: 'XL',
     title: 'Longsleeve Women Z',
+    amount: 3,
     id: 7,
   },
   {
@@ -64,6 +71,7 @@ export const InitialArticlesList: ArticleData[] = [
     color: 'White',
     size: 'XL',
     title: 'Longsleeve Women Z',
+    amount: 3,
     id: 8,
   },
   {
@@ -72,6 +80,7 @@ export const InitialArticlesList: ArticleData[] = [
     color: 'White',
     size: 'XL',
     title: 'Longsleeve Women Z',
+    amount: 7,
     id: 9,
   },
   {
@@ -80,6 +89,7 @@ export const InitialArticlesList: ArticleData[] = [
     color: 'White',
     size: 'XL',
     title: 'Longsleeve Women Z',
+    amount: 4,
     id: 10,
   },
 ];

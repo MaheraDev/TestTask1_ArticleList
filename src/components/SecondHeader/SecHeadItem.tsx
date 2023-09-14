@@ -6,12 +6,12 @@ import PackageIcon from '../../images/SecondHeader/PackageIcon.svg';
 import GoodsQuantity from '../../images/SecondHeader/GoodsQuantity.svg';
 
 type Props = {
-  textContent: string;
+  textContent: string | number;
 };
 export const SecHeadItem: FC<Props> = ({textContent}) => {
   return (
     <StyledViewComp alignItems={'center'} flexDirection={'row'}>
-      {textContent.length > 1 ? <PackageIcon /> : <GoodsQuantity />}
+      {typeof textContent === 'string' ? <PackageIcon /> : <GoodsQuantity />}
       <StyledTextComp fontSize={'12px'}>{textContent}</StyledTextComp>
     </StyledViewComp>
   );

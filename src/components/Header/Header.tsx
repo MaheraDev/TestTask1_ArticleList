@@ -22,11 +22,11 @@ export const Header = () => {
           height={'60px'}
           flexDirection={'row'}
           alignItems={'center'}>
-          <Bluetooth />
+          <Bluetooth height={'60px'} width={'30px'} />
           <StyledTextComp fontSize={'20px'}>100%</StyledTextComp>
         </StyledViewComp>
-        <Radio />
-        <Cloud />
+        <Radio height={'60px'} width={'80px'} />
+        <Cloud height={'60px'} width={'70px'} />
       </StyledViewComp>
       <StyledViewComp
         flexDirection={'row'}

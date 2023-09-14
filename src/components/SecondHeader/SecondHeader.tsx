@@ -3,6 +3,7 @@ import {SecHeadItem} from './SecHeadItem';
 import {StyledViewComp} from '../SimpleComponents/StyledViewComp';
 import {ListSelectionButton} from '../UIComponents/ListSelectionButton';
 import {useNavigation} from '@react-navigation/native';
+import {useAppSelector} from '../../redux/hooks';
 
 const textContent = {
   barcode: '25003900020001902003',
@@ -23,6 +24,13 @@ export const SecondHeader: React.FC<Props> = ({currentScreen}) => {
     navigation.navigate('Cartons');
   };
 
+  const articles = useAppSelector(state => state.articlesList);
+
+  const articlesAmount = articles.reduce((acc, cur) => {
+    acc += cur.amount;
+    return acc;
+  }, 0);
+
   return (
     <StyledViewComp>
       <StyledViewComp
@@ -31,7 +39,7 @@ export const SecondHeader: React.FC<Props> = ({currentScreen}) => {
         justifyContent={'space-between'}
         backgroundColor={'#ddd'}>
         <SecHeadItem textContent={textContent.barcode} />
-        <SecHeadItem textContent={textContent.quantity} />
+        {articlesAmount > 0 && <SecHeadItem textContent={articlesAmount} />}
       </StyledViewComp>
       <StyledViewComp flexDirection={'row'} backgroundColor={'#ddd'}>
         <ListSelectionButton
