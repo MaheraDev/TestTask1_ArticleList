@@ -8,6 +8,7 @@ export const InitialArticlesList: ArticleData[] = [
     color: 'White',
     size: 'XS',
     title: 'Longsleeve Women X',
+    id: 1,
   },
   {
     image: Images.longsleeve,
@@ -15,6 +16,7 @@ export const InitialArticlesList: ArticleData[] = [
     color: 'White',
     size: 'S',
     title: 'Longsleeve Women Y',
+    id: 2,
   },
   {
     image: Images.longsleeve,
@@ -22,6 +24,7 @@ export const InitialArticlesList: ArticleData[] = [
     color: 'White',
     size: 'XL',
     title: 'Longsleeve Women Z',
+    id: 3,
   },
   {
     image: Images.longsleeve,
@@ -29,6 +32,7 @@ export const InitialArticlesList: ArticleData[] = [
     color: 'White',
     size: 'XL',
     title: 'Longsleeve Women Z',
+    id: 4,
   },
   {
     image: Images.longsleeve,
@@ -36,6 +40,7 @@ export const InitialArticlesList: ArticleData[] = [
     color: 'White',
     size: 'XL',
     title: 'Longsleeve Women Z',
+    id: 5,
   },
   {
     image: Images.longsleeve,
@@ -43,6 +48,7 @@ export const InitialArticlesList: ArticleData[] = [
     color: 'White',
     size: 'XL',
     title: 'Longsleeve Women Z',
+    id: 6,
   },
   {
     image: Images.longsleeve,
@@ -50,6 +56,7 @@ export const InitialArticlesList: ArticleData[] = [
     color: 'White',
     size: 'XL',
     title: 'Longsleeve Women Z',
+    id: 7,
   },
   {
     image: Images.longsleeve,
@@ -57,6 +64,7 @@ export const InitialArticlesList: ArticleData[] = [
     color: 'White',
     size: 'XL',
     title: 'Longsleeve Women Z',
+    id: 8,
   },
   {
     image: Images.longsleeve,
@@ -64,6 +72,7 @@ export const InitialArticlesList: ArticleData[] = [
     color: 'White',
     size: 'XL',
     title: 'Longsleeve Women Z',
+    id: 9,
   },
   {
     image: Images.longsleeve,
@@ -71,5 +80,6 @@ export const InitialArticlesList: ArticleData[] = [
     color: 'White',
     size: 'XL',
     title: 'Longsleeve Women Z',
+    id: 10,
   },
 ];

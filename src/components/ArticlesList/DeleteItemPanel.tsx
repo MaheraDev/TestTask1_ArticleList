@@ -4,10 +4,10 @@ import React, {FC} from 'react';
 import {Pressable} from 'react-native';
 
 type Props = {
-  handleDeleteArticle: () => void;
+  handleDeleteItem: () => void;
 };
 export const DeleteItemPanel: FC<Props> = props => {
-  const {handleDeleteArticle} = props;
+  const {handleDeleteItem} = props;
   return (
     <StyledViewComp
       flexDirection={'row'}
@@ -23,7 +23,7 @@ export const DeleteItemPanel: FC<Props> = props => {
       <StyledViewComp>
         <Pressable
           onPress={() => {
-            handleDeleteArticle();
+            handleDeleteItem();
           }}>
           <StyledTextComp color={'#fcfcfc'} fontWeight={'bold'}>
             Delete

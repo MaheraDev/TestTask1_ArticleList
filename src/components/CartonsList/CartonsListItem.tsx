@@ -1,34 +1,29 @@
-import {Image} from 'react-native';
 import React, {FC} from 'react';
-import {ArticleData} from '../../types/ArticlesData';
-import {TextContent} from './TextContent';
 import {StyledButtonComp} from '../SimpleComponents/StyledButtonComp';
 import {StyledTextComp} from '../SimpleComponents/StyledTextComp';
 import {StyledViewComp} from '../SimpleComponents/StyledViewComp';
 import {StyledSwipeableComp} from '../SimpleComponents/StyledSwipeableComp';
 import {useAppDispatch} from '../../redux/hooks';
-import {removeArticle} from '../../redux/ArticlesListSlice';
+import {CartonsData} from '../../types/CartonsData';
+import {removeCarton} from '../../redux/CartonsSlice';
 
 type Props = {
-  data: ArticleData;
+  data: CartonsData;
 };
-export const ArticlesListItem: FC<Props> = ({data}) => {
-  const {image, size, color, title, code} = data;
-  const textContent = {code, color, size, title};
-
+export const CartonsListItem: FC<Props> = ({data}) => {
+  const {barcode, amount} = data;
   const dispatch = useAppDispatch();
-  const handleDeleteArticle = (c: string) => {
-    dispatch(removeArticle(c));
+  const handleDeleteCarton = (c: string) => {
+    dispatch(removeCarton(c));
   };
   return (
-    <StyledSwipeableComp handleDeleteItem={() => handleDeleteArticle(code)}>
+    <StyledSwipeableComp handleDeleteItem={() => handleDeleteCarton(barcode)}>
       <StyledViewComp
         flexDirection={'row'}
         alignItems={'center'}
         justifyContent="space-between"
         padding={'15px'}>
-        <Image source={image} />
-        <TextContent content={textContent} />
+        <StyledTextComp>{barcode}</StyledTextComp>
         <StyledButtonComp
           width={'100px'}
           borderRadius={'10px'}
@@ -36,7 +31,7 @@ export const ArticlesListItem: FC<Props> = ({data}) => {
           justifyContent={'center'}
           backgroundColor={'green'}>
           <StyledTextComp color="white" fontWeight="700">
-            3
+            {amount}
           </StyledTextComp>
         </StyledButtonComp>
         <StyledTextComp>{'>'}</StyledTextComp>
