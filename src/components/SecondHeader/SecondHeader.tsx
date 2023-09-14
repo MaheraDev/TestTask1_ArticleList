@@ -9,7 +9,7 @@ const textContent = {
   quantity: '9',
 };
 
-export const SecondHeader = () => {
+export const SecondHeader = ({currentScreen}) => {
   const navigation = useNavigation();
   const navigateToArticles = () => {
     navigation.navigate('Articles');
@@ -18,11 +18,6 @@ export const SecondHeader = () => {
   const navigateToCartons = () => {
     navigation.navigate('Cartons');
   };
-
-  // const route = useRoute();
-
-  // const isOnArticlesScreen = route.name === 'Articles';
-  // const isOnCartonsScreen = route.name === 'Cartons';
 
   return (
     <StyledViewComp>
@@ -36,14 +31,14 @@ export const SecondHeader = () => {
       </StyledViewComp>
       <StyledViewComp flexDirection={'row'} backgroundColor={'#ddd'}>
         <ListSelectionButton
-          // backgroundColor={isOnCartonsScreen ? '#fff' : '#ddd'}
           textContent={'Cartons'}
           onPress={() => navigateToCartons()}
+          backgroundColor={currentScreen === 'Cartons' ? '#fff' : '#ddd'}
         />
         <ListSelectionButton
-          // backgroundColor={isOnArticlesScreen ? '#fff' : '#ddd'}
           textContent={'Articles'}
           onPress={() => navigateToArticles()}
+          backgroundColor={currentScreen === 'Articles' ? '#fff' : '#ddd'}
         />
       </StyledViewComp>
     </StyledViewComp>

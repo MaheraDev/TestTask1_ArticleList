@@ -6,7 +6,7 @@ export const TabBar = ({state}) => {
   return (
     <>
       <Header />
-      <SecondHeader />
+      <SecondHeader currentScreen={state.routeNames[state.index]} />
     </>
   );
 };

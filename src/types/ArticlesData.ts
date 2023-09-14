@@ -6,4 +6,5 @@ export interface ArticleData {
   color: string;
   size: string;
   title: string;
+  id: number;
 }
