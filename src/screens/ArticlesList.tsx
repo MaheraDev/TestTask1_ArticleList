@@ -29,7 +29,7 @@ export const ArticlesList = () => {
     [],
   );
   return (
-    <List
+    <List<ArticleData>
       dataList={articlesList}
       handleDragEnd={handleDragEnd}
       renderItem={renderTouchableItem}

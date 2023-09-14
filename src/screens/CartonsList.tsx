@@ -28,9 +28,8 @@ export const CartonsList = () => {
     },
     [],
   );
-  console.log(typeof cartonsList);
   return (
-    <List
+    <List<CartonsData>
       dataList={cartonsList}
       handleDragEnd={handleDragEnd}
       renderItem={renderTouchableItem}

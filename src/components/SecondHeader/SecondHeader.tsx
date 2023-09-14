@@ -9,7 +9,11 @@ const textContent = {
   quantity: '9',
 };
 
-export const SecondHeader = ({currentScreen}) => {
+type Props = {
+  currentScreen: string;
+};
+
+export const SecondHeader: React.FC<Props> = ({currentScreen}) => {
   const navigation = useNavigation();
   const navigateToArticles = () => {
     navigation.navigate('Articles');
