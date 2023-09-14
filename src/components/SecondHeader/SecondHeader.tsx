@@ -36,12 +36,12 @@ export const SecondHeader: React.FC<Props> = ({currentScreen}) => {
       <StyledViewComp flexDirection={'row'} backgroundColor={'#ddd'}>
         <ListSelectionButton
           textContent={'Cartons'}
-          onPress={() => navigateToCartons()}
+          onPress={navigateToCartons}
           backgroundColor={currentScreen === 'Cartons' ? '#fff' : '#ddd'}
         />
         <ListSelectionButton
           textContent={'Articles'}
-          onPress={() => navigateToArticles()}
+          onPress={navigateToArticles}
           backgroundColor={currentScreen === 'Articles' ? '#fff' : '#ddd'}
         />
       </StyledViewComp>
