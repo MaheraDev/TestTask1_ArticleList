@@ -9,6 +9,7 @@ type Props = {
   fontSize?: Prop;
   fontWeight?: Prop;
   backgroundColor?: Prop;
+  padding?: Prop;
   margin?: Prop;
   overflow?: Prop;
   borderRadius?: Prop;
@@ -17,6 +18,7 @@ type Props = {
   alignSelf?: Prop;
   justifyContent?: Prop;
   letterSpacing?: Prop;
+  borderWidth?: Prop;
   children?: ReactNode;
 };
 
@@ -26,8 +28,10 @@ const StyledButton = styled(Text)<Props>`
   ${({letterSpacing}) => letterSpacing && `letterSpacing: ${letterSpacing}`};
   ${({fontWeight}) => fontWeight && `fontWeight: ${fontWeight}`};
   ${({borderRadius}) => borderRadius && `borderRadius: ${borderRadius}`};
+  ${({borderWidth}) => borderWidth && `borderWidth: ${borderWidth}`};
   ${({overflow}) => overflow && `overflow: ${overflow}`};
   ${({margin}) => margin && `margin: ${margin}`};
+  ${({padding}) => padding && `padding: ${padding}`};
   ${({justifyContent}) =>
     justifyContent && `justifyContent: ${justifyContent}`};
   ${({alignSelf}) => alignSelf && `align-self: ${alignSelf}`};

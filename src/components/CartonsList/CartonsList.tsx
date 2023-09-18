@@ -1,12 +1,12 @@
 import {TouchableOpacity} from 'react-native';
 import React, {useCallback} from 'react';
 
-import {CartonsListItem} from '../components/CartonsList/CartonsListItem';
-import {useAppDispatch, useAppSelector} from '../redux/hooks';
+import {CartonsListItem} from './CartonsListItem';
+import {useAppDispatch, useAppSelector} from '../../redux/hooks';
 import {RenderItemParams} from 'react-native-draggable-flatlist';
-import {CartonsData} from '../types/CartonsData';
-import {setCartonsListOrder} from '../redux/CartonsSlice';
-import {List} from '../components/UIComponents/List';
+import {CartonsData} from '../../types/CartonsData';
+import {setCartonsListOrder} from '../../redux/CartonsSlice';
+import {List} from '../UIComponents/List';
 
 export const CartonsList = () => {
   const dispatch = useAppDispatch();

@@ -13,11 +13,11 @@ type Props = {
 export const CartonsListItem: FC<Props> = ({data}) => {
   const {barcode, amount} = data;
   const dispatch = useAppDispatch();
-  const handleDeleteCarton = (c: string) => {
-    dispatch(removeCarton(c));
+  const handleDeleteCarton = () => {
+    dispatch(removeCarton(barcode));
   };
   return (
-    <StyledSwipeableComp handleDeleteItem={() => handleDeleteCarton(barcode)}>
+    <StyledSwipeableComp handleDeleteItem={handleDeleteCarton}>
       <StyledViewComp
         flexDirection={'row'}
         alignItems={'center'}

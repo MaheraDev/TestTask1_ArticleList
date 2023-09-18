@@ -1,12 +1,12 @@
 import {TouchableOpacity} from 'react-native';
 import React, {useCallback} from 'react';
 
-import {ArticlesListItem} from '../components/ArticlesList/ArticlesListItem';
-import {useAppDispatch, useAppSelector} from '../redux/hooks';
+import {ArticlesListItem} from './ArticlesListItem';
+import {useAppDispatch, useAppSelector} from '../../redux/hooks';
 import {RenderItemParams} from 'react-native-draggable-flatlist';
-import {ArticleData} from '../types/ArticlesData';
-import {setArticlesListOrder} from '../redux/ArticlesListSlice';
-import {List} from '../components/UIComponents/List';
+import {ArticleData} from '../../types/ArticlesData';
+import {setArticlesListOrder} from '../../redux/ArticlesListSlice';
+import {List} from '../UIComponents/List';
 
 export const ArticlesList = () => {
   const dispatch = useAppDispatch();

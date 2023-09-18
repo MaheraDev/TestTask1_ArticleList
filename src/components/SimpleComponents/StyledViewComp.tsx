@@ -20,6 +20,7 @@ type Props = {
   alignSelf?: Prop;
   alignItems?: Prop;
   backgroundColor?: Prop;
+  borderWidth?: Prop;
   borderBottomWidth?: Prop;
   borderRadius?: Prop;
   borderColor?: Prop;
@@ -31,6 +32,7 @@ const StyledView = styled(View)<Props>`
   ${({gap}) => gap && `gap: ${gap}`};
   ${({width}) => width && `width: ${width}`};
   ${({padding}) => padding && `padding: ${padding}`};
+  ${({borderWidth}) => borderWidth && `borderWidth: ${borderWidth}`};
   ${({position}) => position && `position: ${position}`};
   ${({bottom}) => bottom && `bottom: ${bottom}`};
   ${({left}) => left && `left: ${left}`};

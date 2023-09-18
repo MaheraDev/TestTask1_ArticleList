@@ -16,8 +16,12 @@ type Props = {
   padding?: Prop;
   height?: Prop;
   alignItems?: Prop;
+  alignSelf?: Prop;
   justifyContent?: Prop;
+  justifySelf?: Prop;
   borderColor?: Prop;
+  position?: Prop;
+  bottom?: Prop;
   children?: ReactNode;
 };
 
@@ -36,6 +40,10 @@ const StyledButton = styled(Pressable)<Props>`
   ${({justifyContent}) =>
     justifyContent && `justifyContent: ${justifyContent}`};
   ${({alignItems}) => alignItems && `alignItems: ${alignItems}`};
+  ${({justifySelf}) => justifySelf && `justifySelf: ${justifySelf}`};
+  ${({alignSelf}) => alignSelf && `alignSelf: ${alignSelf}`};
+  ${({position}) => position && `position: ${position}`};
+  ${({bottom}) => bottom && `bottom: ${bottom}`};
 
   ${({color}) => color && `color: ${color}`};
   ${({backgroundColor}) =>
