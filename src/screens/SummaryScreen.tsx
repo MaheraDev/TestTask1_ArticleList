@@ -1,18 +1,17 @@
 import React from 'react';
+
 import {Header} from '../components/Header/Header';
 import {SecondHeader} from '../components/SecondHeader/SecondHeader';
-import {ParamListBase, TabNavigationState} from '@react-navigation/native';
-
-type Props = {
-  state: TabNavigationState<ParamListBase>;
-};
-export const TabBar: React.FC<Props> = ({state}) => {
-  const currentScreen = state.routeNames[state.index];
+import {useRoute} from '@react-navigation/native';
+import {Summary} from '../components/Summary';
+export const SummaryScreen = () => {
+  const route = useRoute();
+  const currentScreen = route.name;
   return (
     <>
       <Header currentScreen={currentScreen} />
-
       <SecondHeader currentScreen={currentScreen} />
+      <Summary />
     </>
   );
 };

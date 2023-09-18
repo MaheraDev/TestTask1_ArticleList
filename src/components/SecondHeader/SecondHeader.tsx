@@ -24,6 +24,8 @@ export const SecondHeader: React.FC<Props> = ({currentScreen}) => {
     navigation.navigate('Cartons');
   };
 
+  const isNotSummaryScreen = currentScreen !== 'Summary';
+
   const articles = useAppSelector(state => state.articlesList);
 
   const articlesAmount = articles.reduce((acc, cur) => {
@@ -39,20 +41,22 @@ export const SecondHeader: React.FC<Props> = ({currentScreen}) => {
         justifyContent={'space-between'}
         backgroundColor={'#ddd'}>
         <SecHeadItem textContent={textContent.barcode} />
-        {articlesAmount > 0 && <SecHeadItem textContent={articlesAmount} />}
+        {isNotSummaryScreen && <SecHeadItem textContent={articlesAmount} />}
       </StyledViewComp>
-      <StyledViewComp flexDirection={'row'} backgroundColor={'#ddd'}>
-        <ListSelectionButton
-          textContent={'Cartons'}
-          onPress={navigateToCartons}
-          backgroundColor={currentScreen === 'Cartons' ? '#fff' : '#ddd'}
-        />
-        <ListSelectionButton
-          textContent={'Articles'}
-          onPress={navigateToArticles}
-          backgroundColor={currentScreen === 'Articles' ? '#fff' : '#ddd'}
-        />
-      </StyledViewComp>
+      {isNotSummaryScreen && (
+        <StyledViewComp flexDirection={'row'} backgroundColor={'#ddd'}>
+          <ListSelectionButton
+            textContent={'Cartons'}
+            onPress={navigateToCartons}
+            backgroundColor={currentScreen === 'Cartons' ? '#fff' : '#ddd'}
+          />
+          <ListSelectionButton
+            textContent={'Articles'}
+            onPress={navigateToArticles}
+            backgroundColor={currentScreen === 'Articles' ? '#fff' : '#ddd'}
+          />
+        </StyledViewComp>
+      )}
     </StyledViewComp>
   );
 };

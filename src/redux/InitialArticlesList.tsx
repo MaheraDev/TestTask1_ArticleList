@@ -10,6 +10,7 @@ export const InitialArticlesList: ArticleData[] = [
     title: 'Longsleeve Women X',
     amount: 3,
     id: 1,
+    cartonId: 1,
   },
   {
     image: Images.longsleeve,
@@ -19,6 +20,7 @@ export const InitialArticlesList: ArticleData[] = [
     title: 'Longsleeve Women Y',
     amount: 1,
     id: 2,
+    cartonId: 1,
   },
   {
     image: Images.longsleeve,
@@ -28,6 +30,7 @@ export const InitialArticlesList: ArticleData[] = [
     title: 'Longsleeve Women Z',
     amount: 3,
     id: 3,
+    cartonId: 1,
   },
   {
     image: Images.longsleeve,
@@ -37,6 +40,7 @@ export const InitialArticlesList: ArticleData[] = [
     title: 'Longsleeve Women Z',
     amount: 3,
     id: 4,
+    cartonId: 1,
   },
   {
     image: Images.longsleeve,
@@ -46,6 +50,7 @@ export const InitialArticlesList: ArticleData[] = [
     title: 'Longsleeve Women Z',
     amount: 3,
     id: 5,
+    cartonId: 1,
   },
   {
     image: Images.longsleeve,
@@ -55,6 +60,7 @@ export const InitialArticlesList: ArticleData[] = [
     title: 'Longsleeve Women Z',
     amount: 3,
     id: 6,
+    cartonId: 1,
   },
   {
     image: Images.longsleeve,
@@ -64,6 +70,7 @@ export const InitialArticlesList: ArticleData[] = [
     title: 'Longsleeve Women Z',
     amount: 3,
     id: 7,
+    cartonId: 1,
   },
   {
     image: Images.longsleeve,
@@ -73,6 +80,7 @@ export const InitialArticlesList: ArticleData[] = [
     title: 'Longsleeve Women Z',
     amount: 3,
     id: 8,
+    cartonId: 1,
   },
   {
     image: Images.longsleeve,
@@ -82,6 +90,7 @@ export const InitialArticlesList: ArticleData[] = [
     title: 'Longsleeve Women Z',
     amount: 7,
     id: 9,
+    cartonId: 1,
   },
   {
     image: Images.longsleeve,
@@ -91,5 +100,6 @@ export const InitialArticlesList: ArticleData[] = [
     title: 'Longsleeve Women Z',
     amount: 4,
     id: 10,
+    cartonId: 1,
   },
 ];

@@ -1,25 +1,30 @@
 import React from 'react';
 import {StyledTextComp} from '../SimpleComponents/StyledTextComp';
-import {StyledViewComp} from '../SimpleComponents/StyledViewComp';
+import {StyledButtonComp} from '../SimpleComponents/StyledButtonComp';
 
 type Props = {
   textContent: string;
+  onPress: () => void;
 };
-export const SummaryInstructionMessage: React.FC<Props> = ({textContent}) => {
+export const SummaryInstructionsButton: React.FC<Props> = ({
+  textContent,
+  onPress,
+}) => {
   return (
-    <StyledViewComp
+    <StyledButtonComp
       borderWidth={'1px'}
-      padding={'20px'}
+      padding={'20px 10px'}
       width={'90%'}
       alignItems={'center'}
       borderRadius={'4px'}
-      borderColor={'rgb(20 40 60)'}>
+      borderColor={'rgb(20 40 60)'}
+      onPress={onPress}>
       <StyledTextComp
-        fontSize={'20px'}
+        fontSize={'16px'}
         color={'rgb(20, 40, 60)'}
         fontWeight={'500'}>
         {textContent}
       </StyledTextComp>
-    </StyledViewComp>
+    </StyledButtonComp>
   );
 };

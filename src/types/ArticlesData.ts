@@ -8,4 +8,5 @@ export interface ArticleData {
   title: string;
   amount: number;
   id: number;
+  cartonId: number;
 }
