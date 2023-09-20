@@ -11,14 +11,14 @@ type Props = {
   value: string;
   name?: string;
   onChangeText?: any;
-  togglePasswordVisible?: (event: any) => void;
+  togglePasswordVisible?: () => void;
 };
 export const PasswordInput: React.FC<Props> = ({
   isPasswordVisible,
   value,
   onChangeText,
   name,
-  togglePasswordVisible
+  togglePasswordVisible,
 }) => {
   return (
     <StyledViewComp alignSelf={'center'} width={'90%'} marginTop={'10px'}>

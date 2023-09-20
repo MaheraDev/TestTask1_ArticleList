@@ -13,8 +13,8 @@ export const EmailValidationMessages: React.FC<Props> = ({
   return (
     <>
       <StyledViewComp
-        flexDirection={'row'}
-        justifyContent={'space-evenly'}
+        // flexDirection={'row'}
+        // justifyContent={'space-evenly'}
         width={'90%'}>
         <StyledTextComp color={values.email.length === 0 ? 'red' : 'green'}>
           Required field

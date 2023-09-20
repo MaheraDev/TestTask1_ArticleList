@@ -5,14 +5,15 @@ import {PasswordInput} from '../components/UIComponents/PasswordInput';
 import {RegistrationButton} from '../components/UIComponents/RegistrationButton';
 // import {ForgotPassword} from '../components/UIComponents/ForgotPassword';
 import {StyledTextComp} from '../components/SimpleComponents/StyledTextComp';
-import {Formik} from 'formik';
+import {ErrorMessage, Formik} from 'formik';
 import * as Yup from 'yup';
-import {GestureResponderEvent} from 'react-native';
 import {PasswordValidationMessages} from '../components/UIComponents/PasswordValidationMessages';
-import {EmailValidationMessages} from '../components/UIComponents/EmailValidationMessages';
+// import {EmailValidationMessages} from '../components/UIComponents/EmailValidationMessages';
 
-const passwordCheck = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,}$/;
-const emailCheck = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+const passwordCheck =
+  /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9])(?!.*(.).*\1.*\1)/;
+
+// const emailCheck = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
 
 const RegistrationSchema = Yup.object().shape({
   email: Yup.string().email('Incorrect Email').required('Required field'),
@@ -27,7 +28,7 @@ const RegistrationSchema = Yup.object().shape({
 
 export const RegistrationForm = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const togglePasswordVisible = (event: GestureResponderEvent) => {
+  const togglePasswordVisible = () => {
     setIsPasswordVisible(value => !value);
   };
   return (
@@ -57,7 +58,7 @@ export const RegistrationForm = () => {
         }}
         onSubmit={values => console.warn(values)}
         validationSchema={RegistrationSchema}>
-        {({handleSubmit, values, handleChange, errors}) => {
+        {({handleSubmit, values, handleChange}) => {
           return (
             <StyledViewComp alignItems={'center'}>
               <UserNameInput
@@ -65,10 +66,9 @@ export const RegistrationForm = () => {
                 name={'email'}
                 onChangeText={handleChange('email')}
               />
-              <EmailValidationMessages
-                values={values}
-                emailCheck={emailCheck}
-              />
+              <ErrorMessage name="email">
+                {msg => <StyledTextComp color={'red'}>{msg}</StyledTextComp>}
+              </ErrorMessage>
               <PasswordInput
                 value={values.password}
                 name={'password'}
