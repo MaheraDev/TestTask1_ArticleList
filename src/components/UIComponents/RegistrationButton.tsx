@@ -3,7 +3,7 @@ import {StyledTextComp} from '../SimpleComponents/StyledTextComp';
 import {StyledButtonComp} from '../SimpleComponents/StyledButtonComp';
 
 type Props = {
-  onPress: () => void;
+  onPress: any;
 };
 export const RegistrationButton: React.FC<Props> = ({onPress}) => {
   return (

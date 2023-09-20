@@ -3,31 +3,23 @@ import {StyledViewComp} from '../components/SimpleComponents/StyledViewComp';
 import {UserNameInput} from '../components/UIComponents/UserNameInput';
 import {PasswordInput} from '../components/UIComponents/PasswordInput';
 import {RegistrationButton} from '../components/UIComponents/RegistrationButton';
-// import {ForgotPassword} from '../components/UIComponents/ForgotPassword';
 import {StyledTextComp} from '../components/SimpleComponents/StyledTextComp';
 import {ErrorMessage, Formik} from 'formik';
 import * as Yup from 'yup';
 import {PasswordValidationMessages} from '../components/UIComponents/PasswordValidationMessages';
-// import {EmailValidationMessages} from '../components/UIComponents/EmailValidationMessages';
 
-const passwordCheck =
-  /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9])(?!.*(.).*\1.*\1)/;
-
-// const emailCheck = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+const includeLetter = /(?=.*[a-zA-Z])/;
+const includeDigits = /(?=.*[0-9])/;
+const includeSpecialSymbols = /(?=.*[^a-zA-Z0-9])/;
+const noRepeat = /^(?!.*(.).*\1.*\1)[\s\S]*$/;
 
 const RegistrationSchema = Yup.object().shape({
   email: Yup.string().email('Incorrect Email').required('Required field'),
-  password: Yup.string()
-    .required('Required field')
-    .min(8, 'At least 8-long')
-    .matches(passwordCheck, {
-      message:
-        'Must include digit, letter, special symbol, up to two identical symbols',
-    }),
 });
 
 export const RegistrationForm = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isErrorVisible, setIsErrorVisible] = useState(false);
   const togglePasswordVisible = () => {
     setIsPasswordVisible(value => !value);
   };
@@ -56,19 +48,29 @@ export const RegistrationForm = () => {
           email: '',
           password: '',
         }}
-        onSubmit={values => console.warn(values)}
+        onSubmit={values => {
+          console.warn(values);
+        }}
         validationSchema={RegistrationSchema}>
-        {({handleSubmit, values, handleChange}) => {
+        {({handleSubmit, values, handleChange, isValid}) => {
+          // const customSubmit = isValid ? handleSubmit : setIsErrorVisible(true);
+          const handleEmailInput = (event: any) => {
+            setIsErrorVisible(false);
+            console.warn(isErrorVisible);
+            handleChange('email')(event);
+          };
           return (
             <StyledViewComp alignItems={'center'}>
               <UserNameInput
                 value={values.email}
                 name={'email'}
-                onChangeText={handleChange('email')}
+                onChangeText={handleEmailInput}
               />
-              <ErrorMessage name="email">
-                {msg => <StyledTextComp color={'red'}>{msg}</StyledTextComp>}
-              </ErrorMessage>
+              {isErrorVisible && (
+                <ErrorMessage name="email">
+                  {msg => <StyledTextComp color={'red'}>{msg}</StyledTextComp>}
+                </ErrorMessage>
+              )}
               <PasswordInput
                 value={values.password}
                 name={'password'}
@@ -78,9 +80,16 @@ export const RegistrationForm = () => {
               />
               <PasswordValidationMessages
                 values={values}
-                passwordCheck={passwordCheck}
+                includeLetters={includeLetter}
+                includeDigits={includeDigits}
+                includeSpecialSymbols={includeSpecialSymbols}
+                noRepeats={noRepeat}
               />
-              <RegistrationButton onPress={handleSubmit} />
+              <RegistrationButton
+                onPress={() =>
+                  isValid ? handleSubmit() : setIsErrorVisible(true)
+                }
+              />
               <StyledTextComp fontSize={'11px'} margin={'20px 0 0 0'}>
                 2.3.19 (202012041745) - DEBUG
               </StyledTextComp>
