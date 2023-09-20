@@ -7,6 +7,7 @@ import {RenderItemParams} from 'react-native-draggable-flatlist';
 import {CartonsData} from '../../types/CartonsData';
 import {setCartonsListOrder} from '../../redux/CartonsSlice';
 import {List} from '../UIComponents/List';
+import {UserNameInput} from '../UIComponents/UserNameInput';
 
 export const CartonsList = () => {
   const dispatch = useAppDispatch();
@@ -29,11 +30,13 @@ export const CartonsList = () => {
     [],
   );
   return (
-    <List<CartonsData>
-      dataList={cartonsList}
-      handleDragEnd={handleDragEnd}
-      renderItem={renderTouchableItem}
-      keyExtractor={(item: {id: number}) => item.id.toString()}
-    />
+    <>
+      <List<CartonsData>
+        dataList={cartonsList}
+        handleDragEnd={handleDragEnd}
+        renderItem={renderTouchableItem}
+        keyExtractor={(item: {id: number}) => item.id.toString()}
+      />
+    </>
   );
 };

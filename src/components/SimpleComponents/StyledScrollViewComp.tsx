@@ -2,19 +2,17 @@ import styled from 'styled-components/native';
 import {ScrollView} from 'react-native';
 import React, {ReactNode} from 'react';
 
-type Prop = string | undefined;
-
 type Props = {
-  flex?: Prop;
-  padding?: Prop;
-  width?: Prop;
-  height?: Prop;
-  marginTop?: Prop;
-  flexDirection?: Prop;
-  justifyContent?: Prop;
-  alignSelf?: Prop;
-  alignItems?: Prop;
-  backgroundColor?: Prop;
+  flex?: string;
+  padding?: string;
+  width?: string;
+  height?: string;
+  marginTop?: string;
+  flexDirection?: string;
+  justifyContent?: string;
+  alignSelf?: string;
+  alignItems?: string;
+  backgroundColor?: string;
   children?: ReactNode;
 };
 

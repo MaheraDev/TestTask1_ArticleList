@@ -2,26 +2,26 @@ import styled from 'styled-components/native';
 import {Pressable} from 'react-native';
 import React, {FC, ReactNode} from 'react';
 
-type Prop = string | undefined;
-
 type Props = {
-  color?: Prop;
-  flex?: Prop;
-  onPress?: () => void;
-  borderWidth?: Prop;
-  backgroundColor?: Prop;
-  overflow?: Prop;
-  borderRadius?: Prop;
-  width?: Prop;
-  padding?: Prop;
-  height?: Prop;
-  alignItems?: Prop;
-  alignSelf?: Prop;
-  justifyContent?: Prop;
-  justifySelf?: Prop;
-  borderColor?: Prop;
-  position?: Prop;
-  bottom?: Prop;
+  color?: string;
+  flex?: string;
+  onPress?: (event: any) => void;
+  borderWidth?: string;
+  backgroundColor?: string;
+  overflow?: string;
+  borderRadius?: string;
+  width?: string;
+  padding?: string;
+  margin?: string;
+  height?: string;
+  alignItems?: string;
+  alignSelf?: string;
+  justifyContent?: string;
+  justifySelf?: string;
+  borderColor?: string;
+  position?: string;
+  bottom?: string;
+  right?: string;
   children?: ReactNode;
 };
 
@@ -30,6 +30,7 @@ const StyledButton = styled(Pressable)<Props>`
   ${({width}) => width && `width: ${width}`};
 
   ${({padding}) => padding && `padding: ${padding}`};
+  ${({margin}) => margin && `margin: ${margin}`};
 
   ${({borderWidth}) => borderWidth && `borderWidth: ${borderWidth}`};
   ${({borderRadius}) => borderRadius && `borderRadius: ${borderRadius}`};
@@ -44,6 +45,7 @@ const StyledButton = styled(Pressable)<Props>`
   ${({alignSelf}) => alignSelf && `alignSelf: ${alignSelf}`};
   ${({position}) => position && `position: ${position}`};
   ${({bottom}) => bottom && `bottom: ${bottom}`};
+  ${({right}) => right && `right: ${right}`};
 
   ${({color}) => color && `color: ${color}`};
   ${({backgroundColor}) =>
