@@ -5,21 +5,16 @@ import {PasswordInput} from '../components/UIComponents/PasswordInput';
 import {RegistrationButton} from '../components/UIComponents/RegistrationButton';
 import {StyledTextComp} from '../components/SimpleComponents/StyledTextComp';
 import {ErrorMessage, Formik} from 'formik';
-import * as Yup from 'yup';
 import {PasswordValidationMessages} from '../components/UIComponents/PasswordValidationMessages';
+import {RegistrationSchema} from '../components/Validation';
 
 const includeLetter = /(?=.*[a-zA-Z])/;
 const includeDigits = /(?=.*[0-9])/;
 const includeSpecialSymbols = /(?=.*[^a-zA-Z0-9])/;
 const noRepeat = /^(?!.*(.).*\1.*\1)[\s\S]*$/;
 
-const RegistrationSchema = Yup.object().shape({
-  email: Yup.string().email('Incorrect Email').required('Required field'),
-});
-
 export const RegistrationForm = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const [isErrorVisible, setIsErrorVisible] = useState(false);
   const togglePasswordVisible = () => {
     setIsPasswordVisible(value => !value);
   };
@@ -48,16 +43,27 @@ export const RegistrationForm = () => {
           email: '',
           password: '',
         }}
+        validateOnChange={false}
+        validateOnBlur={false}
         onSubmit={values => {
-          console.warn(values);
+          console.log(values);
         }}
         validationSchema={RegistrationSchema}>
-        {({handleSubmit, values, handleChange, isValid}) => {
-          // const customSubmit = isValid ? handleSubmit : setIsErrorVisible(true);
-          const handleEmailInput = (event: any) => {
-            setIsErrorVisible(false);
-            console.warn(isErrorVisible);
-            handleChange('email')(event);
+        {({
+          handleSubmit,
+          values,
+          setErrors,
+          setFieldValue,
+          handleChange,
+          errors,
+        }) => {
+          const handleEmailInput = (value: string) => {
+            console.log('value');
+            console.log(value);
+            const updatedErrors = {...errors};
+            delete updatedErrors.email;
+            setErrors({});
+            setFieldValue('email', value);
           };
           return (
             <StyledViewComp alignItems={'center'}>
@@ -66,11 +72,11 @@ export const RegistrationForm = () => {
                 name={'email'}
                 onChangeText={handleEmailInput}
               />
-              {isErrorVisible && (
-                <ErrorMessage name="email">
-                  {msg => <StyledTextComp color={'red'}>{msg}</StyledTextComp>}
-                </ErrorMessage>
-              )}
+              <ErrorMessage name="email">
+                {msg => {
+                  return <StyledTextComp color={'red'}>{msg}</StyledTextComp>;
+                }}
+              </ErrorMessage>
               <PasswordInput
                 value={values.password}
                 name={'password'}
@@ -85,11 +91,7 @@ export const RegistrationForm = () => {
                 includeSpecialSymbols={includeSpecialSymbols}
                 noRepeats={noRepeat}
               />
-              <RegistrationButton
-                onPress={() =>
-                  isValid ? handleSubmit() : setIsErrorVisible(true)
-                }
-              />
+              <RegistrationButton onPress={handleSubmit} />
               <StyledTextComp fontSize={'11px'} margin={'20px 0 0 0'}>
                 2.3.19 (202012041745) - DEBUG
               </StyledTextComp>
