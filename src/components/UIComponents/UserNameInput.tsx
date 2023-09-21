@@ -7,6 +7,8 @@ type Props = {
   value: string;
   name?: string;
   onChangeText?: any;
+  validateOnBlur?: boolean;
+  validateOnChange?: boolean;
 };
 export const UserNameInput: React.FC<Props> = ({value, onChangeText, name}) => {
   return (

@@ -5,7 +5,10 @@ import React, {ReactNode} from 'react';
 type Props = {
   name?: string;
   placeholder?: string;
-  onChangeText?: (value: string) => void;
+  onChangeText?: any;
+  onBlur?: any;
+  errorData?: any;
+  validate?: any;
   color?: string;
   fontSize?: string;
   flex?: string;
@@ -30,6 +33,8 @@ type Props = {
 
 const TextInputWithProps = styled(TextInput)<Props>`
   ${({name}) => name && `name: ${name}`};
+  ${({validate}) => validate && `validate: ${validate}`};
+  ${({errorData}) => errorData && `errorData: ${errorData}`};
   ${({secureTextEntry}) =>
     secureTextEntry && `secureTextEntry: ${secureTextEntry}`};
   ${({placeholder}) => placeholder && `placeholder: ${placeholder}`};

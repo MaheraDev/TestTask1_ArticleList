@@ -12,13 +12,16 @@ import {
   startScan,
   stopScan,
 } from '../redux/SummaryPageSlice';
+import {TimeoutId} from '@reduxjs/toolkit/dist/query/core/buildMiddleware/types';
 
 type Props = {};
 export const Summary: React.FC<Props> = () => {
   const {count, instructionMessage, isScanOn, isErrorMessage} = useAppSelector(
     state => state.summaryPage,
   );
-  const [scanningInterval, setScanningInterval] = useState(null);
+  const [scanningInterval, setScanningInterval] = useState<TimeoutId | null>(
+    null,
+  );
 
   const dispatch = useAppDispatch();
 

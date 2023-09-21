@@ -5,13 +5,7 @@ import {PasswordInput} from '../components/UIComponents/PasswordInput';
 import {RegistrationButton} from '../components/UIComponents/RegistrationButton';
 import {StyledTextComp} from '../components/SimpleComponents/StyledTextComp';
 import {ErrorMessage, Formik} from 'formik';
-import {PasswordValidationMessages} from '../components/UIComponents/PasswordValidationMessages';
-import {RegistrationSchema} from '../components/Validation';
-
-const includeLetter = /(?=.*[a-zA-Z])/;
-const includeDigits = /(?=.*[0-9])/;
-const includeSpecialSymbols = /(?=.*[^a-zA-Z0-9])/;
-const noRepeat = /^(?!.*(.).*\1.*\1)[\s\S]*$/;
+import {RegistrationSchema} from '../components/Validation/RegistrationSchema';
 
 export const RegistrationForm = () => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -57,12 +51,13 @@ export const RegistrationForm = () => {
           handleChange,
           errors,
         }) => {
+          console.warn(errors);
           const handleEmailInput = (value: string) => {
             console.log('value');
             console.log(value);
             const updatedErrors = {...errors};
             delete updatedErrors.email;
-            setErrors({});
+            setErrors(updatedErrors);
             setFieldValue('email', value);
           };
           return (
@@ -84,13 +79,13 @@ export const RegistrationForm = () => {
                 isPasswordVisible={isPasswordVisible}
                 togglePasswordVisible={togglePasswordVisible}
               />
-              <PasswordValidationMessages
-                values={values}
-                includeLetters={includeLetter}
-                includeDigits={includeDigits}
-                includeSpecialSymbols={includeSpecialSymbols}
-                noRepeats={noRepeat}
-              />
+              <ErrorMessage name={'password'}>
+                {msg => {
+                  console.warn(msg);
+                  console.warn(errors);
+                  return <StyledTextComp>{msg}</StyledTextComp>;
+                }}
+              </ErrorMessage>
               <RegistrationButton onPress={handleSubmit} />
               <StyledTextComp fontSize={'11px'} margin={'20px 0 0 0'}>
                 2.3.19 (202012041745) - DEBUG
