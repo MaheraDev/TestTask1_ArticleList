@@ -1,13 +1,17 @@
 import styled from 'styled-components/native';
-import {Text} from 'react-native';
+import {TextInput} from 'react-native';
 import React, {ReactNode} from 'react';
 
 type Props = {
+  name?: string;
+  placeholder?: string;
+  onChangeText?: any;
+  onBlur?: any;
+  errorData?: any;
+  validate?: any;
   color?: string;
-  position?: string;
-  top?: string;
-  right?: string;
   fontSize?: string;
+  flex?: string;
   fontWeight?: string;
   backgroundColor?: string;
   padding?: string;
@@ -17,36 +21,53 @@ type Props = {
   width?: string;
   alignItems?: string;
   alignSelf?: string;
-  textAlign?: string;
   justifyContent?: string;
   letterSpacing?: string;
   borderWidth?: string;
+  borderBottomWidth?: string;
+  borderBottomColor?: string;
+  value?: string;
+  secureTextEntry?: boolean;
   children?: ReactNode;
 };
 
-const StyledButton = styled(Text)<Props>`
+const TextInputWithProps = styled(TextInput)<Props>`
+  ${({name}) => name && `name: ${name}`};
+  ${({validate}) => validate && `validate: ${validate}`};
+  ${({errorData}) => errorData && `errorData: ${errorData}`};
+  ${({secureTextEntry}) =>
+    secureTextEntry && `secureTextEntry: ${secureTextEntry}`};
+  ${({placeholder}) => placeholder && `placeholder: ${placeholder}`};
   ${({width}) => width && `width: ${width}`};
-  ${({position}) => position && `position: ${position}`};
-  ${({top}) => top && `top: ${top}`};
-  ${({right}) => right && `right: ${right}`};
   ${({fontSize}) => fontSize && `fontSize: ${fontSize}`};
+  ${({flex}) => flex && `flex: ${flex}`};
   ${({letterSpacing}) => letterSpacing && `letterSpacing: ${letterSpacing}`};
   ${({fontWeight}) => fontWeight && `fontWeight: ${fontWeight}`};
   ${({borderRadius}) => borderRadius && `borderRadius: ${borderRadius}`};
   ${({borderWidth}) => borderWidth && `borderWidth: ${borderWidth}`};
+  ${({borderBottomWidth}) =>
+    borderBottomWidth && `borderBottomWidth: ${borderBottomWidth}`};
+  ${({borderBottomColor}) =>
+    borderBottomColor && `borderBottomColor: ${borderBottomColor}`};
   ${({overflow}) => overflow && `overflow: ${overflow}`};
   ${({margin}) => margin && `margin: ${margin}`};
   ${({padding}) => padding && `padding: ${padding}`};
   ${({justifyContent}) =>
     justifyContent && `justifyContent: ${justifyContent}`};
   ${({alignSelf}) => alignSelf && `align-self: ${alignSelf}`};
-  ${({textAlign}) => textAlign && `textAlign: ${textAlign}`};
   ${({alignItems}) => alignItems && `alignItems: ${alignItems}`};
   ${({color}) => color && `color: ${color}`};
+  ${({value}) => value && `value: ${value}`};
   ${({backgroundColor}) =>
     backgroundColor && `backgroundColor: ${backgroundColor}`};
 `;
 
-export const StyledTextComp = (props: Props) => (
-  <StyledButton {...props}>{props.children}</StyledButton>
+export const StyledTextInput: React.FC<Props> = ({
+  onChangeText,
+  children,
+  ...rest
+}) => (
+  <TextInputWithProps {...rest} onChangeText={onChangeText}>
+    {children}
+  </TextInputWithProps>
 );

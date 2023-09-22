@@ -2,27 +2,26 @@ import styled from 'styled-components/native';
 import {View} from 'react-native';
 import React, {ReactNode} from 'react';
 
-type Prop = string | undefined;
-
 type Props = {
-  flex?: Prop;
-  gap?: Prop;
-  position?: Prop;
-  bottom?: Prop;
-  left?: Prop;
-  right?: Prop;
-  padding?: Prop;
-  width?: Prop;
-  height?: Prop;
-  marginTop?: Prop;
-  flexDirection?: Prop;
-  justifyContent?: Prop;
-  alignSelf?: Prop;
-  alignItems?: Prop;
-  backgroundColor?: Prop;
-  borderBottomWidth?: Prop;
-  borderRadius?: Prop;
-  borderColor?: Prop;
+  flex?: string;
+  gap?: string;
+  position?: string;
+  bottom?: string;
+  left?: string;
+  right?: string;
+  padding?: string;
+  width?: string;
+  height?: string;
+  marginTop?: string;
+  flexDirection?: string;
+  justifyContent?: string;
+  alignSelf?: string;
+  alignItems?: string;
+  backgroundColor?: string;
+  borderWidth?: string;
+  borderBottomWidth?: string;
+  borderRadius?: string;
+  borderColor?: string;
   children?: ReactNode;
 };
 
@@ -31,6 +30,7 @@ const StyledView = styled(View)<Props>`
   ${({gap}) => gap && `gap: ${gap}`};
   ${({width}) => width && `width: ${width}`};
   ${({padding}) => padding && `padding: ${padding}`};
+  ${({borderWidth}) => borderWidth && `borderWidth: ${borderWidth}`};
   ${({position}) => position && `position: ${position}`};
   ${({bottom}) => bottom && `bottom: ${bottom}`};
   ${({left}) => left && `left: ${left}`};
