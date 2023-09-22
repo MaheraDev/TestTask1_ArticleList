@@ -45,6 +45,9 @@ export const FormField: React.FC<Props> = ({
         onBlur={onBlur}
         errorData={errorData}
         secureTextEntry={secureTextEntry}
+        borderBottomWidth={'1px'}
+        borderBottomColor={'#aaa'}
+        padding={'5px'}
       />
     </StyledViewComp>
   );
